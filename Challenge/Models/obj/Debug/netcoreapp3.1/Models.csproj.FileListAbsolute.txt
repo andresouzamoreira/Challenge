@@ -1,0 +1,9 @@
+C:\Challenge\Challenge\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+C:\Challenge\Challenge\Models\bin\Debug\netcoreapp3.1\Models.dll
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+C:\Challenge\Challenge\Models\bin\Debug\netcoreapp3.1\Models.pdb
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.dll
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.pdb
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.csprojAssemblyReference.cache
+C:\Challenge\Challenge\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
