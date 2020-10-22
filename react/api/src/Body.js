@@ -5,38 +5,12 @@ class Body extends Component {
 
   state = {
     curtidas:{
-      idUsuario: 0,
-      ipUsuario: "",
-      qtdeCurtidas: 0,
+      idCurtida: 0,
+      ipCurtida: "",
+      qtdeCurtidas: 110,
       brownser: "",
     }
   }
-
-/*componentDidMount(){
-  axios.get('https://localhost:44373/Curtidas').then(response => {
-    debugger;   
-    const curtidas = response.data    
-    this.setState({curtidas})
-  })
-}*/
-// componentDidMount(){  
-//     return axios('/Curtidas', {
-//       method: 'GET',
-//       crossdomain: true,
-//       mode: 'no-cors',      
-//       headers: {
-//         'Access-Control-Allow-Origin':'*',
-//         'Content-Type': 'application/json',       
-//         'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE' ,
-//         'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',              
-//       },
-//       withCredentials: true,
-//       credentials: 'same-origin',
-//     }).then(response => {
-//       const curtidas = response.data    
-//       this.setState({curtidas})
-//   })
-// }
 
 componentDidMount(){
   this.AtualizaContadorCurtidas();
@@ -45,20 +19,19 @@ componentDidMount(){
  salvar = (curtidas) => {
      debugger;
      curtidas.qtdeCurtidas = curtidas.qtdeCurtidas + 1
-     let id = curtidas.idUsuario
+     let id = curtidas.idCurtida
      this.setState({ curtidas });
-     axios.put('/Curtidas/'+ 'idUsuario?=' +curtidas.idUsuario, curtidas).then(response => {        
-    // this.AtualizaContadorCurtidas();
+     axios.put('/Curtidas/'+ 'idCurtida?=' +curtidas.idCurtida, curtidas).then(response => {        
    })
  }
 
   AtualizaContadorCurtidas() {
-    
-    axios.get('/Curtidas').then(response => {
+    debugger;    
+     axios.get('/Curtidas').then(response => {
       debugger;
       const curtidas = response.data[0];
       this.setState({ curtidas });
-    });
+    }).catch();
   }
 
 render(){ return <main className="bd-masthead" id="content" role="main">
@@ -78,7 +51,7 @@ render(){ return <main className="bd-masthead" id="content" role="main">
                         </p>
                         <div className="d-flex flex-column flex-md-row lead mb-3">
                           <button onClick={()=> {this.salvar(this.state.curtidas)}} className="btn btn-lg btn-bd-primary mb-3 mb-md-0 mr-md-3">Curtir</button>
-                          <h3 className="btn btn-0 btn-bd-primary mb-0" >{this.state.curtidas.qtdeCurtidas}</h3>
+                          <h3 className="btn btn-0 btn-bd-primary mb-0">{this.state.curtidas.qtdeCurtidas}</h3>                         
                         </div>
                         <p className="text-muted mb-0">
                           Versão atual 4.1.3
@@ -88,9 +61,5 @@ render(){ return <main className="bd-masthead" id="content" role="main">
                   </div>
             </main>
   }
-}
- 
-
-
-
+} 
 export default Body;

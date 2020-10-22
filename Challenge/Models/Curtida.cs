@@ -7,21 +7,26 @@ using System.Text;
 
 namespace Models
 {
-   public class Usuario
+   public class Curtida
     {
-        public Usuario()
+        public Curtida()
         {
+
         }
 
-        public int IdUsuario { get; set; }
-        public string IpUsuario { get; set; }
+        public int IdCurtida { get; set; }
+        public string IpCurtida { get; set; }
         public int QtdeCurtidas { get; set; }
         public string Brownser { get; set; }
 
-        public static List<Usuario> Todos()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<Curtida> Todos()
         {
             
-            var lista = new List<Usuario>();
+            var lista = new List<Curtida>();
 
             SqlConnection conn = new SqlConnection(Conexao.Dados);
 
@@ -33,10 +38,10 @@ namespace Models
 
             while (reader.Read())
             {
-                lista.Add(new Usuario
+                lista.Add(new Curtida
                 {
-                    IdUsuario = Convert.ToInt32(reader["ID_USUARIO"]),
-                    IpUsuario = reader["IP_USUARIO"].ToString(),
+                    IdCurtida = Convert.ToInt32(reader["ID_CURTIDA"]),
+                    IpCurtida = reader["IP_CURTIDA"].ToString(),
                     Brownser = reader["BROWNSER"].ToString(),
                     QtdeCurtidas = (int)reader["QTDE_CURTIDA"]
 
@@ -53,9 +58,9 @@ namespace Models
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="usuario"></param>
+        /// <param name="Curtida"></param>
         /// <returns></returns>
-        public bool AtualizaUsuarios(Usuario usuario)
+        public bool AtualizaCurtidas(Curtida Curtida)
         {
             try
             {
@@ -63,9 +68,9 @@ namespace Models
 
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(@"UPDATE TB_CURTIDAS SET QTDE_CURTIDA = @QtdeCurtidas WHERE ID_USUARIO = @IdUsuario  ", conn);
-                cmd.Parameters.AddWithValue("@IdUsuario", usuario.IdUsuario);
-                cmd.Parameters.AddWithValue("@QtdeCurtidas", usuario.QtdeCurtidas);
+                SqlCommand cmd = new SqlCommand(@"UPDATE TB_CURTIDAS SET QTDE_CURTIDA = @QtdeCurtidas WHERE ID_Curtida = @IdCurtida  ", conn);
+                cmd.Parameters.AddWithValue("@IdCurtida", Curtida.IdCurtida);
+                cmd.Parameters.AddWithValue("@QtdeCurtidas", Curtida.QtdeCurtidas);
 
                 cmd.ExecuteNonQuery();
                 

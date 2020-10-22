@@ -10,7 +10,7 @@ namespace Challenge
         public Apresentacao()
         {
             rotas = new List<string>();
-            rotas.Add("/usuarios");
+            rotas.Add("/Curtidas");
         }
 
         private List<string> rotas { get; set; }

@@ -8,25 +8,24 @@ namespace Challenge.Controllers
 {
     [Route("Curtidas")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    public class CurtidasController : ControllerBase
     {
         private readonly IMemoryCache _cache;
-        public UsuariosController(IMemoryCache cache)
+        public CurtidasController(IMemoryCache cache)
         {
             _cache = cache;
         }
 
-        [HttpGet("memorycache")]
-        [HttpGet]
+        [HttpGet("memorycache")]        
         [Route("")]
-        public List<Usuario> Index()
+        public List<Curtida> Index()
         {
-            var cacheEntry = _cache.GetOrCreate("MeuCacheKey", entry =>
+            var cacheEntry = _cache.GetOrCreate("CacheKeyTodos", entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
                 entry.SetPriority(CacheItemPriority.High);
 
-                return Usuario.Todos();
+                return Curtida.Todos();
             });
 
             return cacheEntry;           
@@ -35,20 +34,20 @@ namespace Challenge.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="idUsuario"></param>
-        /// <param name="usuario"></param>
+        /// <param name="idCurtida"></param>
+        /// <param name="Curtida"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("idUsuario")]
-        public bool AtualizaUsuarios(int idUsuario, [FromBody] Usuario usuario)
+        [Route("idCurtida")]
+        public bool AtualizaCurtidas(int idCurtida, [FromBody] Curtida Curtida)
         {
-            var cacheEntry = _cache.GetOrCreate("MeuCacheKey2", entry =>
+            var cacheEntry = _cache.GetOrCreate("CacheKeyCurtidas", entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
                 entry.SetPriority(CacheItemPriority.High);
 
-                var objUsuario = new Usuario();
-                return objUsuario.AtualizaUsuarios(usuario);
+                var objCurtida = new Curtida();
+                return objCurtida.AtualizaCurtidas(Curtida);
             });
 
             return true;
